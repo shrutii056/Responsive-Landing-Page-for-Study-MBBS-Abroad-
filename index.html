@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Study MBBS Abroad - Find top countries, eligibility, and apply now!">
+    <meta name="keywords" content="MBBS Abroad, Study Medicine, Medical Universities">
+    <title>Study MBBS Abroad</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'YOUR_GA_TRACKING_ID');
+    </script>
+    
+    <!-- Facebook Pixel -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_PIXEL_ID');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+    /></noscript>
+    
+    <script>
+        async function submitForm(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            if (!data.name || !data.email || !data.phone || !data.country) {
+                alert("All fields are required.");
+                return;
+            }
+            
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+                alert("Invalid email format.");
+                return;
+            }
+            
+            console.log("Form Submitted:", data);
+            alert("Thank you for applying. We will contact you soon.");
+            
+            // Track form submission in Google Analytics
+            gtag('event', 'form_submission', {
+                'event_category': 'Lead Form',
+                'event_label': data.country
+            });
+            
+            // Track form submission in Facebook Pixel
+            fbq('track', 'Lead');
+            
+            event.target.reset();
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+    <!-- Hero Section -->
+    <section class="bg-blue-600 text-white text-center py-16">
+        <h1 class="text-4xl font-bold">Study MBBS Abroad</h1>
+        <p class="text-lg mt-2">Your gateway to a world-class medical education</p>
+        <a href="#lead-form" class="mt-4 inline-block bg-white text-blue-600 font-bold py-2 px-6 rounded-full">Apply Now</a>
+    </section>
+    
+    <!-- Why Study MBBS Abroad -->
+    <section class="container mx-auto p-6">
+        <h2 class="text-2xl font-bold text-center">Why Study MBBS Abroad?</h2>
+        <ul class="list-disc mt-4 space-y-2">
+            <li>Affordable tuition fees</li>
+            <li>Globally recognized universities</li>
+            <li>High-quality education</li>
+        </ul>
+    </section>
+    
+    <!-- Top Countries -->
+    <section class="container mx-auto p-6">
+        <h2 class="text-2xl font-bold text-center">Top Countries</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+            <div class="bg-white p-4 shadow">Russia</div>
+            <div class="bg-white p-4 shadow">Uzbekistan</div>
+            <div class="bg-white p-4 shadow">Kazakhstan</div>
+            <div class="bg-white p-4 shadow">Philippines</div>
+            <div class="bg-white p-4 shadow">Georgia</div>
+            <div class="bg-white p-4 shadow">Kyrgyzstan</div>
+            <div class="bg-white p-4 shadow">Egypt</div>
+        </div>
+    </section>
+    
+    <!-- Admission Process & Eligibility -->
+    <section class="container mx-auto p-6">
+        <h2 class="text-2xl font-bold text-center">Admission Process & Eligibility</h2>
+        <ol class="list-decimal mt-4 space-y-2">
+            <li>Check eligibility criteria</li>
+            <li>Submit application form</li>
+            <li>Receive admission confirmation</li>
+            <li>Apply for a student visa</li>
+        </ol>
+    </section>
+    
+    <!-- Lead Generation Form with JavaScript Validation -->
+    <section id="lead-form" class="container mx-auto p-6 bg-white shadow-md rounded-lg">
+        <h2 class="text-2xl font-bold text-center">Apply Now</h2>
+        <form onsubmit="submitForm(event)" class="mt-4">
+            <input type="text" name="name" placeholder="Name" class="w-full p-2 border rounded mb-2" required>
+            <input type="email" name="email" placeholder="Email" class="w-full p-2 border rounded mb-2" required>
+            <input type="tel" name="phone" placeholder="Phone" class="w-full p-2 border rounded mb-2" required>
+            <select name="country" class="w-full p-2 border rounded mb-2" required>
+                <option value="">Select Country Preference</option>
+                <option>Russia</option>
+                <option>Uzbekistan</option>
+                <option>Kazakhstan</option>
+            </select>
+            <button type="submit" class="bg-blue-600 text-white w-full py-2 rounded">Submit</button>
+        </form>
+    </section>
+</body>
+</html>
